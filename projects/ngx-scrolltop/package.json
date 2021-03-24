@@ -1,0 +1,38 @@
+{
+  "name": "ngx-scrolltop",
+  "version": "2.3.1",
+  "description": "Lightweight, Material Design inspired button for scroll-to-top of the page. No dependencies. Pure Angular!",
+  "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
+  "peerDependencies": {
+    "@angular/common": ">=5 <12",
+    "@angular/core": ">=5 <12"
+  },
+  "homepage": "https://github.com/bartholomej/ngx-scrolltop",
+  "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/bartholomej/ngx-scrolltop.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/bartholomej/ngx-scrolltop/issues"
+  },
+  "schematics": "./schematics/collection.json",
+  "keywords": [
+    "material",
+    "angular",
+    "ngx",
+    "material design",
+    "button",
+    "animate",
+    "scrollTop",
+    "scroll to top",
+    "sass"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/bartholomej"
+  }
+}

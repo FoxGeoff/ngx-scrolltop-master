@@ -1,0 +1,44 @@
+name: Build & run all tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 14
+        uses: actions/setup-node@master
+        with:
+          node-version: 14
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies # Install all deps
+        run: yarn
+
+      - name: Sync versions # Sync versions
+        run: yarn syncprojects
+
+      - name: Build ngx-scrolltop # Build
+        run: yarn build --prod
+
+      - name: Build Schematics # Build Schematics and move
+        run: yarn build:schematics
+
+      - name: Build Example # Build Example page
+        run: yarn build:example
+
+      - name: Run tests # Build Schematics and move
+        run: yarn test --configuration=ci
